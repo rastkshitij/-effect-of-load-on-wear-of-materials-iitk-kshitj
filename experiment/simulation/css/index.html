@@ -85,6 +85,24 @@
 	  </div><br>
 	  <button class="button button1 B" id="moveButton7" style="cursor: pointer;" >Start Rotation</button>
 	  <button class="button button1 B" id="moveButton8" >Show Result</button>
+	  <button class="button button1 B" id="tablebutton" >Show Table</button>
+	  <button class="button button1 B" id="conclusionButton">Conclusion:</button>
+	  <button class="button button1 B" id="showTableButton">Show Table</button>
+	
+
+
+<div id="conclusionContent" style="display: none; margin-top: 10px; padding: 10px; background-color: #ffffff; border: 1px solid #ccc; border-radius: 10px; max-width: 600px;">
+    <ol style="line-height: 1.6;">
+		Conclusion:
+        <li>Wear scar depth and wear scar width increase with an increase in load.</li>
+        <li>Wear rate increases with an increase in load.</li>
+        <li>Specific wear rate does not vary with load.</li>
+        <li>The coefficient of friction of metallic pairs generally increases with load at low levels due to oxide film breakdown and/or elastic deformation.</li>
+        <li>At higher loads, the coefficient of friction remains high for a range but eventually drops due to interfacial changes caused by wear.</li>
+    </ol>
+</div>
+
+
 	
 			</section>
 
@@ -3324,6 +3342,20 @@
   <br>
   <button id="nextButton">Next</button>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const conclusionBtn = document.getElementById("conclusionButton");
+        const conclusionBox = document.getElementById("conclusionContent");
+
+        conclusionBtn.addEventListener("click", function () {
+            if (conclusionBox.style.display === "none") {
+                conclusionBox.style.display = "block";
+            } else {
+                conclusionBox.style.display = "none";
+            }
+        });
+    });
+</script>
 
 
 			</section>
