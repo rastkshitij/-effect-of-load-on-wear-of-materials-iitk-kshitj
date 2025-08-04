@@ -460,3 +460,96 @@ this the changed  code  */
   line-height: 1.4;
   text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Center the entire result box */
+/* Center the entire result box */
+#resultContainer {
+  display: none;
+  margin: 20px auto;
+  width: 800px; /* fixed width */
+  height: 600px; /* fixed height */
+  text-align: center;
+  border: 5px solid rgba(0, 0, 0, 0.974);
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  position: relative;
+  top: -50px;
+  box-sizing: border-box;
+}
+
+/* Image wrapper */
+#imageWrapper {
+  position: relative;
+}
+
+/* The image itself */
+.materialPhoto {
+  display: none;
+  width: 100%;
+  max-height: 350px; /* fixed height */
+  object-fit: contain;
+  border: 3px solid black;
+  border-radius: 6px;
+}
+
+/* Label at top of image */
+#imageLabel {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Description below the image */
+#imageDescription {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.4;
+  height: 90px; /* fixed height */
+  overflow: auto; /* scroll if content overflows */
+  white-space: pre-line;
+}
+
+
+/* Nav buttons */
+.nav-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-buttons button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+
