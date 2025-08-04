@@ -416,3 +416,187 @@ document.getElementById("moveButton6").addEventListener("click", function() {
   });
 
 
+
+
+
+
+
+function showCalculation() {
+  const container = document.getElementById("calculationContainer");
+  container.style.display = "block";
+
+  if (selectedLoad === "10") {
+    container.innerHTML = generateTable({
+      testNumber: "2",
+      sample: "316 L stainless steel (Ra = 28 nm)",
+      load: "10 N",
+      speed: "25 RPM",
+      time: "30 min",
+      Wv: "0.562",
+      Δm: "0.001",
+      cof: "0.41±0.06",
+      dmax: "23 µm",
+      SpWr1: "1.3×10⁻³",
+      Wr1: "1.6×10⁻²",
+      Wr2: "1.3×10⁻²"
+    });
+  } else if (selectedLoad === "20") {
+    container.innerHTML = generateTable({
+      testNumber: "1",
+      sample: "316 L stainless steel (Ra = 16 nm)",
+      load: "20 N",
+      speed: "50 RPM",
+      time: "30 min",
+      Wv: "0.285",
+      Δm: "0.009",
+      cof: "0.45±0.07",
+      dmax: "33 µm",
+      SpWr1: "1.2×10⁻³",
+      Wr1: "4.4×10⁻²",
+      Wr2: "1.1×10⁻²"
+    });
+  } else {
+    container.innerHTML = "<p style='color:red;'>Please select a Load first.</p>";
+  }
+}
+function generateTable(data) {
+  return `
+    <table style="width:100%; border-collapse:collapse; margin-top:10px;" border="1">
+      <tr style="background:#eee;">
+        <th>Parameter</th>
+        <th>Value</th>
+      </tr>
+      <tr><td>Sample<br>(Ra = Sample roughness)</td><td>${data.sample}</td></tr>
+      <tr><td>Load</td><td>${data.load}</td></tr>
+      
+      <tr>
+  <td>Mass Loss<br>Δm = m₁ − m₂</td>
+  <td>${data.Δm} g</td>
+</tr>
+      <tr><td>Coefficient of Friction (cof)</td><td>${data.cof}</td></tr>
+      <tr><td>Max Penetration depth (dmax)</td><td>${data.dmax}</td></tr>
+      <tr><td>Specific Wear Rate (Sp. Wr)</td><td>${data.SpWr1} mm³/N·m</td></tr>
+      <tr><td>Wear Rate (Wr)</td><td>${data.Wr1} (mass)</td></tr>
+    </table>
+    <p style="margin-top:10px; font-style:italic; font-size:14px;">
+      
+    </p>
+  `;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let selectedLoad = null;   // stores '10' or '20'
+let originalImg = null;
+let xProfileImg = null;
+let yProfileImg = null;
+
+function selectLOAD(load) {
+  selectedLoad = load;  // '10' or '20'
+  
+  // Show the "Show Result" button when load is selected
+  document.getElementById("moveButton8").classList.remove("hidden");
+
+  // Hide result container and images if user changes load
+  document.getElementById("resultContainer").style.display = "none";
+  document.querySelectorAll('.materialPhoto').forEach(img => img.style.display = "none");
+}
+
+function showResult() {
+  if (!selectedLoad) return;
+
+  // Hide all images first
+  document.querySelectorAll('.materialPhoto').forEach(img => img.style.display = "none");
+
+  // Assign images based on selectedLoad
+  if (selectedLoad === '10') {
+    originalImg = document.querySelector('img[src="out1.png"]');
+    xProfileImg = document.querySelector('img[src="out11.png"]');
+    yProfileImg = document.querySelector('img[src="out12.png"]');
+  } else if (selectedLoad === '20') {
+    originalImg = document.querySelector('img[src="out2.png"]');
+    xProfileImg = document.querySelector('img[src="out21.png"]');
+    yProfileImg = document.querySelector('img[src="out22.png"]');
+  }
+
+  // Show original image by default
+  showImage(originalImg);
+
+  // Enable/disable nav buttons accordingly
+  toggleNavButtons(true, true, false);
+
+  // Show the container
+  document.getElementById("resultContainer").style.display = "block";
+}
+
+function showImage(img) {
+  // Hide all images first
+  document.querySelectorAll('.materialPhoto').forEach(i => i.style.display = "none");
+  
+  if (img) {
+    img.style.display = "block";
+    document.getElementById("imageLabel").innerHTML = `<b>${img.dataset.label}</b>`;
+    document.getElementById("imageDescription").innerText = img.dataset.desc;
+  }
+}
+
+function toggleNavButtons(xEnabled, yEnabled, origEnabled) {
+  document.getElementById("nextBtn").disabled = !xEnabled;  // X-profile
+  document.getElementById("prevBtn").disabled = !yEnabled;  // Y-profile
+  document.getElementById("origBtn").disabled = !origEnabled;  // Original
+}
+
+// Navigation buttons event listeners
+document.getElementById("prevBtn").addEventListener("click", () => {
+  showImage(yProfileImg);
+  toggleNavButtons(true, false, true);
+});
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+  showImage(xProfileImg);
+  toggleNavButtons(false, true, true);
+});
+
+document.getElementById("origBtn").addEventListener("click", () => {
+  showImage(originalImg);
+  toggleNavButtons(true, true, false);
+});
+
+
+
+
+function showcMessage() {
+  document.getElementById("cMessage").style.display = "block";
+}

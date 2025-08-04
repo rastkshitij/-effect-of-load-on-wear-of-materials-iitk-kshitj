@@ -80,16 +80,24 @@
 	  <button class="button button1 hidden B" id="moveButton5" >pin on tribometer</button><br>
 	  <div id="buttonContainer" class="hidden">
 		<h3 class="m " >Input Load :</h3>
-	  <button class="button button1 B" id="moveButton6" onclick="toggleButtons()" >10N</button>
-	  <button class="button button1 B" id="moveButton9" onclick="toggleButtons()">20N</button>
+	  <button class="button button1 B" id="moveButton6" onclick="selectLOAD('10')" >10N</button>
+	  <button class="button button1 B" id="moveButton9" onclick="selectLOAD('20')">20N</button>
 	  </div><br>
 	  <button class="button button1 B" id="moveButton7" style="cursor: pointer;" >Start Rotation</button>
-	  <button class="button button1 B" id="moveButton8" >Show Result</button>
-	  <button class="button button1 B" id="tablebutton" >Show Table</button>
-	  <button class="button button1 B" id="conclusionButton">Conclusion:</button>
-	  <button class="button button1 B" id="showTableButton">Show Table</button>
-	
+	  <button class="button button1 B" id="moveButton8" onclick="showResult()" >Show Result</button>
 
+	  <!-- <button class="button button1 B" id="conclusionButton">Conclusion:</button> -->
+	  <button class="button button1 B hidden" id="calculationBtn" onclick="showCalculation()">Calculation</button>
+	  <button class="button button1 B hidden" id="cBtn" onclick="showcMessage()">Conclusion</button>
+					<div id="cMessage" class="message-text"
+						style="display: none; margin-top: 5px; font-size:20px;font-weight: bold;">
+						As the sliding speed (RPM) increases, the wear rate of the material also increases.
+					</div>
+
+
+
+	  
+<!-- 
 
 <div id="conclusionContent" style="display: none; margin-top: 10px; padding: 10px; background-color: #ffffff; border: 1px solid #ccc; border-radius: 10px; max-width: 600px;">
     <ol style="line-height: 1.6;">
@@ -100,8 +108,9 @@
         <li>The coefficient of friction of metallic pairs generally increases with load at low levels due to oxide film breakdown and/or elastic deformation.</li>
         <li>At higher loads, the coefficient of friction remains high for a range but eventually drops due to interfacial changes caused by wear.</li>
     </ol>
-</div>
-
+	<div id="calculationContainer" style="display:none; margin-top:20px;"></div>
+</div> -->
+<div id="calculationContainer" style="display:none; margin-top:20px;"></div>
 
 	
 			</section>
@@ -113,12 +122,13 @@
                     </h4>
                 </center>
 				<button class="button button1 B" id="reloadButton" style="width: 100px;">Reset</button>
-
+<div id="calculationContainer" style="display:none; margin-top:20px;"></div>
 				
 				<div style="height:100% ; width:100%; position: relative;" >
 					 <div class="formal-container">
     Put the mouse pointer on the different components to see details
   </div>
+  <div id="calculationContainer" style="display:none; margin-top:20px;"></div>
 				<!-- SVG IMAGE PART -->
 				<div id="elementName"></div>
                 <svg id="svgContainer" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -3336,6 +3346,50 @@
 
 <h1 id="out" style="margin-left: 8px;">OUTPUT:</h1>
 </div>
+<div id="resultContainer">
+					<div id="imageWrapper">
+						<div id="imageLabel"><b>Speed: 25 RPM</b></div>
+						<img class="materialPhoto rpm25" src="out1.png" alt="Material 1" data-label="Speed: 25 RPM"
+							data-desc="Sample: 316 L stainless steel (Ra= 28 nm)&#10;Counter body: stainless steel&#10;Load: 10N&#10;Speed: 25 RPM&#10;Time: 30 min
+	X-Profile: is a cross-sectional line graph that shows the variation in surface height (Z-axis) along a horizontal line (X-axis) across the circular wear track.
+	Y-Profile: is a cross-sectional line graph that shows the variation in surface height (Z-axis) along a vertical line (Y-axis) across the wear track.">
+						<img class="materialPhoto rpm25" src="out11.png" alt="Material 1" data-label="X-Profile"
+							data-desc="
+    ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
+	ΔZ: is the difference in height between The horizontal green line (surface level) The lowest point of the blue profile curve between the red and green lines
+	ΔX = -2.4584 mm&#10;ΔZ = -23.0632 μm">
+						<img class="materialPhoto rpm25" src="out12.png" alt="Material 1" data-label="Y-Profile"
+							data-desc="
+	ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
+	ΔZ: is the difference in height between The horizontal green line (surface level) The lowest point of the blue profile curve between the red and green lines
+	ΔX = -2.352 mm&#10;ΔZ = -21.0612 μm">
+
+						<img class="materialPhoto rpm50" src="out2.png" alt="Material 2" data-label="Speed: 50 RPM"
+							data-desc="Sample: 316 L stainless steel (Ra= 16 nm)&#10;Counter body: stainless steel&#10;Load: 10N&#10;Speed: 50 RPM&#10;Time: 30 min
+	X-Profile: is a cross-sectional line graph that shows the variation in surface height (Z-axis) along a horizontal line (X-axis) across the circular wear track.
+	Y-Profile: is a cross-sectional line graph that shows the variation in surface height (Z-axis) along a vertical line (Y-axis) across the wear track.">
+						<img class="materialPhoto rpm50" src="out21.png" alt="Material 2" data-label="X-Profile"
+							data-desc=" 
+	ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
+	ΔZ: is the difference in height between The horizontal green line (surface level) The lowest point of the blue profile curve between the red and green lines
+	ΔX = 2.4008 mm&#10;ΔZ = 33.2978 μm">
+						<img class="materialPhoto rpm50" src="out22.png" alt="Material 2" data-label="Y-Profile"
+							data-desc="
+	ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
+	ΔZ: is the difference in height between The horizontal green line (surface level) The lowest point of the blue profile curve between the red and green lines
+	ΔX = 2.1884 mm&#10;ΔZ = 43.0173 μm">
+
+
+						<div id="imageDescription">Description text will appear here.</div>
+					</div>
+
+					<div class="nav-buttons">
+						<button id="prevBtn">Y-Profile</button>
+						<button id="origBtn">Original Image</button>
+						<button id="nextBtn">X-Profile</button>
+					</div>
+					<!-- <div id="calculationContainer" style="display:none; margin-top:20px;"></div> -->
+				</div>
 
 <div id="resultContainer" style="display: none;">
   <img id="slideshowImage" src="" style="width: 350px; height: 250px;" />
