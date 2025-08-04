@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function revealNextButton(currentButtonIndex) {
         if (currentButtonIndex < buttons.length - 1) {
-            buttons[currentButtonIndex].disabled = true;
+            // buttons[currentButtonIndex].disabled = true;
             buttons[currentButtonIndex + 1].classList.remove('hidden');
         }
     }
@@ -280,28 +280,59 @@ const resultContainer = document.getElementById('resultContainer');
 const material1Photo = document.getElementById('material1Photo');
 const material2Photo = document.getElementById('material2Photo');
 
-// Function to show the result photo based on the choice of material
-function showResult() {
-    if (flag_material1) {
 
-        resultContainer.style.display = 'block';
-        material1Photo.style.display = 'block';
-        material2Photo.style.display = 'none';
-    }
-    if (flag_material2) {
-            resultContainer.style.display = 'block';
-            material1Photo.style.display = 'none';
-            material2Photo.style.display = 'block';
-        }
-    // if(!flag_material1 && !flag_material2){
-    //     alert('Please select a material first.');
+const slideshowImg = document.getElementById('slideshowImage');
+const nextBtn = document.getElementById('nextButton');
 
-    // }
+const material1Slides = [
+  '../css/output/co1-1.png',
+  '../css/output/co1-2.png',
+];
+
+const material2Slides = [
+  '../css/output/co2-1.png',
+  '../css/output/co2-2.png',
+];
+//chnaged code
+const material1Captions = [
+  'Material 1 - Image 1 Description',
+  'Material 1 - Image 2 Description',
+];
+
+const material2Captions = [
+  'Material 2 - Image 1 Description',
+  'Material 2 - Image 2 Description',
+];
+
+//changed code
+let slideIndex = 0;
+let currentSlides = [];
+
+function showSlideshow() {
+  resultContainer.style.display = 'block';
+
+  if (flag_material1) {
+    currentSlides = material1Slides;
+  } else if (flag_material2) {
+    currentSlides = material2Slides;
+  } else {
+    alert('Please select a material first.');
+    return;
+  }
+
+  slideIndex = 0;
+  slideshowImg.src = currentSlides[slideIndex];
 }
-console.log(moveButton8.addEventListener('click', showResult)
-)
-// Add click event listener to the Show Result button
-moveButton8.addEventListener('click', showResult);
+
+function nextSlide() {
+  if (currentSlides.length === 0) return;
+  slideIndex = (slideIndex + 1) % currentSlides.length;
+  slideshowImg.src = currentSlides[slideIndex];
+}
+
+moveButton8.addEventListener('click', showSlideshow);
+nextBtn.addEventListener('click', nextSlide);
+
 
 
 

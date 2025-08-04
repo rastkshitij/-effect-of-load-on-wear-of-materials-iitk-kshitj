@@ -327,7 +327,7 @@ display: flex;
 .img1{
   height: 190px;
   border-radius: 25px;
-  width: 450px;
+  width: 250px;
   margin-left: 10px;
   /* margin-top: 5px; */
   border: 3px solid black;
@@ -339,9 +339,8 @@ display: flex;
 .img1{
   height: 190px;
   border-radius: 25px;
-  width: 350px;
+  width: 250px;
   margin-left: 10px;
-  margin-top: 5px;
   border: 3px solid black;
 }
 }
@@ -374,5 +373,90 @@ height: 190px;
 }
 
 
+/* 
+this the changed  code  */
+    .formal-container {
+      width: 300px; /* Small width */
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: 'Georgia', 'Times New Roman', serif; /* Formal font */
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: left; /* Left aligned text */
+      color: #333;
+            margin-left: auto;
+      margin-right: 0;
+    }
 
 
+        #resultContainer {
+      display: none;
+      width: 300px;
+      margin: 20px auto;
+      border: 2px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+
+
+    #resultContainer {
+  display: block;
+  width: 500px; /* slightly wider for larger image */
+  padding: 20px; /* reduced padding */
+  background-color: #fff8f8;
+  border: 1px solid #e38b8b; /* thinner border */
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin: 30px auto;
+}
+
+#slideshowImage {
+  width: 100%;
+  height: auto;
+  max-height: 400px; /* increased height */
+  object-fit: contain;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.4s ease-in-out;
+}
+
+/* Stylish button (unchanged, already good) */
+#nextButton {
+  background: linear-gradient(to right, #ff5e6c, #ff8a5e);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(255, 94, 108, 0.4);
+}
+
+#nextButton:hover {
+  background: linear-gradient(to right, #ff3e50, #ff7040);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(255, 94, 108, 0.5);
+}
+
+.caption {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #444;
+  font-family: 'Georgia', serif;
+  line-height: 1.4;
+  text-align: center;
+}
