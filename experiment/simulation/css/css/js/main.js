@@ -628,3 +628,79 @@ document.getElementById("origBtn").addEventListener("click", () => {
 function showcMessage() {
   document.getElementById("cMessage").style.display = "block";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function openFormulaModal() {
+  document.getElementById("formulaModal").style.display = "block";
+
+  // 🔁 Ask MathJax to re-typeset formulas inside modal
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
+}
+
+function closeFormulaModal() {
+  document.getElementById("formulaModal").style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function markClicked(button) {
+    // Remove tick from all buttons (if you want only one active at a time)
+    // document.querySelectorAll('.button').forEach(btn => btn.classList.remove('clicked'));
+
+    // Add tick to the clicked one
+    button.classList.add('clicked');
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function showinitialMessage() {
+  document.getElementById("initialMessage").style.display = "block";
+}
+
+function showCleanMessage() {
+  document.getElementById("cleanMessage").style.display = "block";
+}
+
+function showWeightMessage() {
+  document.getElementById("weightMessage").style.display = "block";
+}

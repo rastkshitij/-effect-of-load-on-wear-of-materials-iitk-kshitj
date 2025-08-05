@@ -72,7 +72,9 @@
 	  <h2 class="m">Input Parameters:</h2><br>
 	  
 	  <!-- <h3 class="m">Enter the Material (couple Material):</h3><br> -->
-	  <button class="button button1 B" id="moveButton">Material </button>  
+	  <button class="button button1 B " id="moveButton" onclick="showinitialMessage()">Material </button>
+					<div id="initialMessage" class="message-text" style="display: none; margin-top: 5px;"><b>Initial Mass
+						of the Sample m1=16.445gm</b></div> 
 	  <!-- <button class="button button1 B " id="moveButton2"  onclick="toggleButtons()">Material 2</button> -->
 	  <button class="button button1 hidden B" id="moveButton3">Input Ball</button>
 	  <button class="button button1 hidden B" id="moveButton4" >Insert The Ball</button>
@@ -80,14 +82,24 @@
 	  <button class="button button1 hidden B" id="moveButton5" >Pin on Tribometer</button><br>
 	  <div id="buttonContainer" class="hidden">
 		<h3 class="m " >Input Load :</h3>
-	  <button class="button button1 B" id="moveButton6" onclick="selectLOAD('10')" >10N</button>
-	  <button class="button button1 B" id="moveButton9" onclick="selectLOAD('20')">20N</button>
+	  <button class="button button1 B" id="moveButton6" onclick="selectLOAD('10');markClicked(this)" >10N<span class="tick">✔️</span></button>
+	  <button class="button button1 B" id="moveButton9" onclick="selectLOAD('20');markClicked(this)">20N<span class="tick">✔️</span></button>
 	  </div><br>
 	  <button class="button button1 B" id="moveButton7" style="cursor: pointer;" >Start Rotation for 30 min <br>(Speed:50 RPM)</button>
+					<button class="button button1 B hidden" id="cleanSampleBtn" onclick="showCleanMessage()">Clean the
+						Sample</button>
+					<div id="cleanMessage" class="message-text" style="display: none; margin-top: 5px;"><b>Sample cleaned
+						successfully</b></div>
+		<button class="button button1 B hidden" id="measureWeightBtn" onclick="showWeightMessage()">Measure
+						the Weight</button>
+					<div id="weightMessage" class="message-text" style="display: none; margin-top: 5px;"><b> Weight
+						measured successfully.</b><b>Final mass of the Sample m2=16.444gm</b></div>
+	  
 	  <button class="button button1 B" id="moveButton8" onclick="showResult()" >Perform Optical Profilometry</button>
 
 	  <!-- <button class="button button1 B" id="conclusionButton">Conclusion:</button> -->
 	  <button class="button button1 B hidden" id="calculationBtn" onclick="showCalculation()">Calculation</button>
+	  <button class="button button1 B hidden" onclick="openFormulaModal()">Formulae Used</button>
 	  <button class="button button1 B hidden" id="cBtn" onclick="showcMessage()">Conclusion</button>
 					<div id="cMessage" class="message-text"
      style="display: none; margin-top: 5px; font-size: 17px; font-weight: bold;">
@@ -3428,9 +3440,82 @@
 		</div>
 	</div>
 	
-	
+	<div id="formulaModal" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeFormulaModal()">&times;</span>
+
+			<h2 style="color: red;">Wear Rate Formulas</h2>
+
+			<div class="formula-box">
+				<p><b>1. Volume Loss:</b></p>
+				<p>$$\Delta V = \frac{\Delta m}{\rho} $$</p>
+				<ul>
+					<li>\( \Delta m = m_1 - m_2 \) : Mass loss (g)</li>
+					<li>\( \rho \) : Density (g/cm³)</li>
+					<li>\(\Delta V \) : Volume loss (cm³)</li>
+				</ul>
+			</div>
+
+			<div class="formula-box">
+				<p><b>2. Specific Wear Rate:</b></p>
+				<p>$$ k = \frac{\Delta V}{F \times L} = \frac{\Delta m}{\rho \times F \times L} $$</p>
+				<ul>
+					<li>\( F \) : Applied load (N)</li>
+					<li>\( L \) : Sliding distance (m)</li>
+					<li>\( k \) : Specific wear rate (mm³/N·m)</li>
+				</ul>
+			</div>
+
+			<div class="formula-box">
+				<p><b>3. Unit of Specific Wear Rate:</b></p>
+				<p>$$ \text{Unit of } k = \frac{\text{m}\text{m}^3}{\text{N} \cdot \text{m}} $$</p>
+			</div>
+			<div class="formula-box">
+				<p><b>4. Mass Loss:</b></p>
+				<p>$$ \Delta m = m_1 - m_2 $$</p>
+				<ul>
+					<li>\( m_1 \): Initial mass before test</li>
+					<li>\( m_2 \): Final mass after test</li>
+					<li>\( \Delta m \): Mass loss (g)</li>
+				</ul>
+
+			</div>
+			<div class="formula-box">
+				<p><b>5. Sliding Distance:</b></p>
+				<p>$$ L =  \pi D N t $$</p>
+				<ul>
+					<li>\( D \): Diameter of disc (m)</li>
+					<li>\( N \): Rotational speed (revolutions per second)</li>
+					<li>\( t \): Time (s)</li>
+					<li>\( L \): Sliding distance (m)</li>
+				</ul>
+
+			</div>
+			<div class="formula-box">
+				<p><b>6. Wear Rate:</b></p>
+				<p>$$ \text{Wear Rate} = \frac{\Delta V}{L} $$</p>
+				<ul>
+					<li>\(\Delta V \): Volume loss (cm³)</li>
+					<li>\( L \): Sliding distance (m)</li>
+				</ul>
+
+			</div>
+			<div class="formula-box">
+				<p><b>7. Coefficient of Friction:</b></p>
+				<p>$$ \mu = \frac{F_{\text{friction}}}{F_{\text{normal}}} $$</p>
+				<ul>
+					<li>\( F_{\text{friction}} \): Frictional force (N)</li>
+					<li>\( F_{\text{normal}} \): Normal load (N)</li>
+					<li>\( \mu_{\text{Coefficient of Friction}} \): Obtained From Tribometer data </li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 	<!-- Add JS at the bottom of HTML file --> 
+	    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
         <script src="../css/css/js/main.js"></script>
 		<!-- <div>
 			<center><button style="margin-bottom: 40px; " onclick="window.print()">Print this page</button></center>
