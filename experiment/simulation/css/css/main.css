@@ -554,3 +554,101 @@ this the changed  code  */
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+}
+
+h2 {
+  color: red;
+  font-size: 24px;
+}
+
+ul {
+  font-size: 17px;
+  margin-left: 20px;
+  line-height: 1.6;
+}
+
+.formula-box {
+  background: #f0f0f0;
+  border-left: 5px solid #007bff;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+/* Popup Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+.modal-content {
+  background: white;
+  margin: 8% auto;
+  padding: 25px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 700px;
+  position: relative;
+  color: #000;
+
+  /* ✅ Scroll settings */
+  max-height: 80vh;         /* Limit height to 80% of viewport */
+  overflow-y: auto;         /* Add vertical scrollbar if needed */
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: red;
+  cursor: pointer;
+}
+.close:hover {
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+.tick {
+  display: none;
+  margin-left: 8px;
+  color: green;
+  font-size: 18px;
+}
+
+.button.clicked .tick {
+  display: inline;
+}
