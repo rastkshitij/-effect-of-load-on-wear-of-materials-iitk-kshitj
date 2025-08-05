@@ -427,33 +427,31 @@ function showCalculation() {
 
   if (selectedLoad === "10") {
     container.innerHTML = generateTable({
-      testNumber: "2",
-      sample: "316 L stainless steel (Ra = 28 nm)",
+      testNumber: "1",
+      sample: "316 L stainless steel (Ra = 16 nm)",
+      counterBody: "Stainless steel",
       load: "10 N",
-      speed: "25 RPM",
+      speed: "50 RPM",
       time: "30 min",
-      Wv: "0.562",
-      Δm: "0.001",
-      cof: "0.41±0.06",
-      dmax: "23 µm",
-      SpWr1: "1.3×10⁻³",
-      Wr1: "1.6×10⁻²",
-      Wr2: "1.3×10⁻²"
+      dmax: "33 µm",
+      cof: "0.45±0.07",
+      deltaM: "0.009 g",
+      massLossWr: "4.4x10⁻² mm³/m",
+      massLossSpWr: "4.4x10⁻³ mm³/N·m"
     });
   } else if (selectedLoad === "20") {
     container.innerHTML = generateTable({
-      testNumber: "1",
-      sample: "316 L stainless steel (Ra = 16 nm)",
+      testNumber: "2",
+      sample: "316 L stainless steel (Ra = 28 nm)",
+      counterBody: "Stainless steel",
       load: "20 N",
       speed: "50 RPM",
       time: "30 min",
-      Wv: "0.285",
-      Δm: "0.009",
-      cof: "0.45±0.07",
-      dmax: "33 µm",
-      SpWr1: "1.2×10⁻³",
-      Wr1: "4.4×10⁻²",
-      Wr2: "1.1×10⁻²"
+      dmax: "58 µm",
+      cof: "0.40±0.06",
+      deltaM: "0.011 g",
+      massLossWr: "5.3x10⁻² mm³/m",
+      massLossSpWr: "2.7x10⁻³ mm³/N·m"
     });
   } else {
     container.innerHTML = "<p style='color:red;'>Please select a Load first.</p>";
@@ -466,20 +464,50 @@ function generateTable(data) {
         <th>Parameter</th>
         <th>Value</th>
       </tr>
-      <tr><td>Sample<br>(Ra = Sample roughness)</td><td>${data.sample}</td></tr>
-      <tr><td>Load</td><td>${data.load}</td></tr>
-      
       <tr>
-  <td>Mass Loss<br>Δm = m₁ − m₂</td>
-  <td>${data.Δm} g</td>
+        <td>Sample<br>(Ra = Sample roughness)</td>
+        <td>${data.sample}</td>
+      </tr>
+      <tr>
+        <td>Counter Body</td>
+        <td>${data.counterBody}</td>
+      </tr>
+      <tr>
+        <td>Load</td>
+        <td>${data.load}</td>
+      </tr>
+      <tr>
+        <td>Speed</td>
+        <td>${data.speed}</td>
+      </tr>
+      <tr>
+        <td>Time</td>
+        <td>${data.time}</td>
+      </tr>
+      <tr>
+        <td>Max Penetration Depth (dmax)</td>
+        <td>${data.dmax}</td>
+      </tr>
+      <tr>
+        <td>Coefficient of Friction (cof)</td>
+        <td>${data.cof}</td>
+      </tr>
+      <tr>
+  <td>Mass Loss<br>(Δm = m₁ - m₂)</td>
+  <td>${data.deltaM}</td>
 </tr>
-      <tr><td>Coefficient of Friction (cof)</td><td>${data.cof}</td></tr>
-      <tr><td>Max Penetration depth (dmax)</td><td>${data.dmax}</td></tr>
-      <tr><td>Specific Wear Rate (Sp. Wr)</td><td>${data.SpWr1} mm³/N·m</td></tr>
-      <tr><td>Wear Rate (Wr)</td><td>${data.Wr1} (mass)</td></tr>
+
+      <tr>
+        <td>Wear Rate (Wr)</td>
+        <td>${data.massLossWr}</td>
+      </tr>
+      <tr>
+        <td>Specific Wear Rate (Sp. Wr)</td>
+        <td>${data.massLossSpWr}</td>
+      </tr>
     </table>
     <p style="margin-top:10px; font-style:italic; font-size:14px;">
-      
+      Ra = Sample surface roughness, dmax = Maximum penetration depth, Δm = Change in mass, Wr = Wear rate, Sp. Wr = Specific wear rate
     </p>
   `;
 }
