@@ -74,7 +74,7 @@
 	  <!-- <h3 class="m">Enter the Material (couple Material):</h3><br> -->
 	  <button class="button button1 B " id="moveButton" onclick="showinitialMessage()">Material </button>
 					<div id="initialMessage" class="message-text" style="display: none; margin-top: 5px;"><b>Initial Mass
-						of the Sample m1=16.445gm</b></div> 
+						of the Sample m1=16.445 g</b></div> 
 	  <!-- <button class="button button1 B " id="moveButton2"  onclick="toggleButtons()">Material 2</button> -->
 	  <button class="button button1 hidden B" id="moveButton3">Input Ball</button>
 	  <button class="button button1 hidden B" id="moveButton4" >Insert The Ball</button>
@@ -93,15 +93,16 @@
 		<button class="button button1 B hidden" id="measureWeightBtn" onclick="showWeightMessage()">Measure
 						the Weight</button>
 					<div id="weightMessage" class="message-text" style="display: none; margin-top: 5px;"><b> Weight
-						measured successfully.</b><b>Final mass of the Sample m2=16.444gm</b></div>
+						measured successfully.</b><b>Final mass of the Sample m2= 16.444 g</b></div>
 	  
 	  <button class="button button1 B" id="moveButton8" onclick="showResult()" >Perform Optical Profilometry</button>
 
 	  <!-- <button class="button button1 B" id="conclusionButton">Conclusion:</button> -->
+	     <button class="button button1 B hidden" onclick="openFormulaModal()">Formulae Used</button>
 	  <button class="button button1 B hidden" id="calculationBtn" onclick="showCalculation()">Calculation</button>
-	  <button class="button button1 B hidden" onclick="openFormulaModal()">Formulae Used</button>
+	  
 	  <button class="button button1 B hidden" id="cBtn" onclick="showcMessage()">Conclusion</button>
-					<div id="cMessage" class="message-text"
+					<!-- <div id="cMessage" class="message-text"
      style="display: none; margin-top: 5px; font-size: 17px; font-weight: bold;">
   <ul style="padding-left: 20px; line-height: 1.6;">
     <li>Wear scar depth and wear scar width increase with increase in load.</li>
@@ -110,7 +111,7 @@
     <li>The coefficient of friction of metallic pairs generally increases with load at low loads due to oxide film breakdown and/or elastic deformation.</li>
     <li>It remains high over a load range, then drops at high loads due to interfacial changes caused by wear.</li>
   </ul>
-</div>
+</div> -->
 
 
 
@@ -3378,7 +3379,7 @@
 							data-desc="
     ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
 	ΔZ: is the difference in height between The horizontal green line (surface level) The lowest point of the blue profile curve between the red and green lines
-	ΔX = 2.4008 mm mm&#10;ΔZ = 33.2978">
+	ΔX = 2.4008 mm mm&#10;ΔZ = dmax = 33.2978 μm">
 						<img class="materialPhoto rpm25" src="out12.png" alt="Material 1" data-label="Y-Profile"
 							data-desc="
 	ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
@@ -3393,7 +3394,7 @@
 							data-desc=" 
 	ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
 	ΔZ: is the difference in height between The horizontal green line (surface level) The lowest point of the blue profile curve between the red and green lines
-	ΔX = 2.5159 mm&#10;ΔZ = 58.0802 μm">
+	ΔX = 2.5159 mm&#10;ΔZ = dmax = 58.0802 μm">
 						<img class="materialPhoto rpm50" src="out22.png" alt="Material 2" data-label="Y-Profile"
 							data-desc="
 	ΔX: Represents the distance between the two vertical markers Red line (R) on the left Green line (M) on the right
@@ -3418,7 +3419,17 @@
   <br>
   <button id="nextButton">Next</button>
 </div>
-
+<div id="cMessage" class="message-text"
+     style="display: none; margin-top: 5px; font-size: 17px; font-weight: bold;">
+  <ul style="padding-left: 20px; line-height: 1.6;">
+	<b>Conclusion:</b>
+    <li>Wear scar depth and wear scar width increase with increase in load.</li>
+    <li>Wear rate increases with increase in load.</li>
+    <li>Specific wear rate does not vary with load.</li>
+    <li>The coefficient of friction of metallic pairs generally increases with load at low loads due to oxide film breakdown and/or elastic deformation.</li>
+    <li>It remains high over a load range, then drops at high loads due to interfacial changes caused by wear.</li>
+  </ul>
+</div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const conclusionBtn = document.getElementById("conclusionButton");
@@ -3451,8 +3462,8 @@
 				<p>$$\Delta V = \frac{\Delta m}{\rho} $$</p>
 				<ul>
 					<li>\( \Delta m = m_1 - m_2 \) : Mass loss (g)</li>
-					<li>\( \rho \) : Density (g/cm³)</li>
-					<li>\(\Delta V \) : Volume loss (cm³)</li>
+					<li>\( \rho \) : Density (g/mm³)</li>
+					<li>\(\Delta V \) : Volume loss (mm³)</li>
 				</ul>
 			</div>
 
@@ -3480,17 +3491,20 @@
 				</ul>
 
 			</div>
-			<div class="formula-box">
-				<p><b>5. Sliding Distance:</b></p>
-				<p>$$ L =  \pi D N t $$</p>
-				<ul>
-					<li>\( D \): Diameter of disc (m)</li>
-					<li>\( N \): Rotational speed (revolutions per second)</li>
-					<li>\( t \): Time (s)</li>
-					<li>\( L \): Sliding distance (m)</li>
-				</ul>
+	<div class="formula-box">
+  <p><b>5. Sliding Distance:</b></p>
+  <p>$$ L = \pi D N t $$</p>
+  <ul>
+    <li>\( D \): Average diameter of wear track (m)</li>
+    <li>\( D = \frac{D_1 + D_2}{2} \)</li>
+    <li>\( D_1 \): Diameter measured using X-Profile</li>
+    <li>\( D_2 \): Diameter measured using Y-Profile</li>
+    <li>\( N \): Rotational speed (revolutions per second)</li>
+    <li>\( t \): Time (s)</li>
+    <li>\( L \): Sliding distance (m)</li>
+  </ul>
+</div>
 
-			</div>
 			<div class="formula-box">
 				<p><b>6. Wear Rate:</b></p>
 				<p>$$ \text{Wear Rate} = \frac{\Delta V}{L} $$</p>
