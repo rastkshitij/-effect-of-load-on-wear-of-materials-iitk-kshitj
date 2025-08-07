@@ -704,3 +704,27 @@ function showCleanMessage() {
 function showWeightMessage() {
   document.getElementById("weightMessage").style.display = "block";
 }
+
+
+
+
+
+
+
+
+
+function startRotation() {
+  const cleanBtn = document.getElementById('cleanSampleBtn');
+
+  // Hide the clean button
+  cleanBtn.style.display = "none";
+
+  // Show it again after 5 seconds
+  setTimeout(() => {
+    cleanBtn.style.display = "inline-block"; // or "block" depending on your layout
+  }, 5000);
+}
+
+function showCleanMessage() {
+  document.getElementById("cleanMessage").style.display = "block";
+}

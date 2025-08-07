@@ -498,8 +498,8 @@ this the changed  code  */
   background-color: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  position: relative;
-  top: -50px;
+  position:static;
+  top: -250px;
   box-sizing: border-box;
 }
 
